@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <link rel="stylesheet" href="pls.css">
+</head>
+<body>
+    <header>
+        <h1>Employee Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="#employees">Employees</a></li>
+                <li><a href="#attendance">Attendance</a></li>
+                <li><a href="#payroll">Payroll</a></li>
+                <li><a href="#performance">Performance Reviews</a></li>
+                <li><a href="#salary-advances">Salary Advances</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="employees">
+            <h2>Employees</h2>
+            <form id="employee-form" action="">
+                <input type="number" placeholder="Employee ID" required id="employee-id">
+                <input type="text" placeholder="Name" required id="employee-name">
+                <input type="email" placeholder="Contact Details" required id="employee-contact">
+                <input type="text" placeholder="Department" required id="employee-department">
+                <input type="text" placeholder="Designation" required id="employee-designation">
+                <button type="submit">Add Employee</button>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Contact Details</th>
+                        <th>Department</th>
+                        <th>Designation</th>
+                    </tr>
+                </thead>
+                <tbody id="employee-data">
+                    <!-- Employee data will be populated here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="attendance">
+            <h2>Attendance</h2>
+            <form id="attendance-form">
+                <input type="number" placeholder="Attendance ID" required id="attendance-id">
+                <input type="number" placeholder="Employee ID" required id="attendance-employee-id">
+                <input type="date" placeholder="Date" required id="attendance-date">
+                <input type="time" placeholder="In Time" required id="in-time">
+                <input type="time" placeholder="Out Time" required id="out-time">
+                <select id="attendance-status" required>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                    <option value="Leave">Leave</option>
+                </select>
+                <button type="submit">Add Attendance</button>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Attendance ID</th>
+                        <th>Employee ID</th>
+                        <th>Date</th>
+                        <th>In Time</th>
+                        <th>Out Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="attendance-data">
+                    <!-- Attendance data will be populated here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="payroll">
+            <h2>Payroll</h2>
+            <form id="payroll-form">
+                <input type="number" placeholder="Payroll ID" required id="payroll-id">
+                <input type="number" placeholder="Employee ID" required id="payroll-employee-id">
+                <input type="number" placeholder="Salary" required id="salary">
+                <input type="number" placeholder="Bonuses" required id="bonuses">
+                <input type="number" placeholder="Deductions" required id="deductions">
+                <button type="submit">Add Payroll</button>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Payroll ID</th>
+                        <th>Employee ID</th>
+                        <th>Salary</th>
+                        <th>Bonuses</th>
+                        <th>Deductions</th>
+                    </tr>
+                </thead>
+                <tbody id="payroll-data">
+                    <!-- Payroll data will be populated here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="performance">
+            <h2>Performance Reviews</h2>
+            <form id="performance-form">
+                <input type="number" placeholder="Review ID" required id="review-id">
+                <input type="number" placeholder="Employee ID" required id="performance-employee-id">
+                <input type="date" placeholder="Review Date" required id="review-date">
+                <input type="number" placeholder="Rating (1-5)" required id="rating" min="1" max="5">
+                <input type="text" placeholder="Feedback" required id="feedback">
+                <button type="submit">Add Performance Review</button>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Review ID</th>
+                        <th>Employee ID</th>
+                        <th>Review Date</th>
+                        <th>Rating</th>
+                        <th>Feedback</th>
+                    </tr>
+                </thead>
+                <tbody id="performance-data">
+                    <!-- Performance data will be populated here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="salary-advances">
+            <h2>Salary Advances</h2>
+            <form id="salary-advances-form">
+                <input type="number" placeholder="Advance ID" required id="advance-id">
+                <input type="number" placeholder="Employee ID" required id="advance-employee-id">
+                <input type="number" placeholder="Amount" required id="amount">
+                <input type="date" placeholder="Request Date" required id="request-date">
+                <select id="status" required>
+                    <option value="Pending">Pending</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+                <button type="submit">Add Salary Advance</button>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Advance ID</th>
+                        <th>Employee ID</th>
+                        <th>Amount</th>
+                        <th>Request Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="salary-advances-data">
+                    <!-- Salary advances data will be populated here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Employee Management System</p>
+    </footer>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const employeeForm = document.getElementById("employee-form");
+    const attendanceForm = document.getElementById("attendance-form");
+    const payrollForm = document.getElementById("payroll-form");
+    const performanceForm = document.getElementById("performance-form");
+    const salaryAdvancesForm = document.getElementById("salary-advances-form");
+
+     employeeForm.addEventListener("Add Employee", (event) => {
+        event.preventDefault();
+        const employeeId = document.getElementById("employee-id").value;
+        const name = document.getElementById("employee-name").value;
+        const contact = document.getElementById("employee-contact").value;
+        const department = document.getElementById("employee-department").value;
+        const designation = document.getElementById("employee-designation").value;
+
+        const row = `<tr>
+                        <td>${employeeId}</td>
+                        <td>${name}</td>
+                        <td>${contact}</td>
+                        <td>${department}</td>
+                        <td>${designation}</td>
+                    </tr>`;
+        document.getElementById("employee-data").insertAdjacentHTML("beforeend", row);
+        employeeForm.reset();
+    });
+
+    attendanceForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const attendanceId = document.getElementById("attendance-id").value;
+        const employeeId = document.getElementById("attendance-employee-id").value;
+        const date = document.getElementById("attendance-date").value;
+        const inTime = document.getElementById("in-time").value;
+        const outTime = document.getElementById("out-time").value;
+        const status = document.getElementById("attendance-status").value;
+
+        const row = `<tr>
+                        <td>${attendanceId}</td>
+                        <td>${employeeId}</td>
+                        <td>${date}</td>
+                        <td>${inTime}</td>
+                        <td>${outTime}</td>
+                        <td>${status}</td>
+                    </tr>`;
+        document.getElementById("attendance-data").insertAdjacentHTML("beforeend", row);
+        attendanceForm.reset();
+    });
+
+    payrollForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const payrollId = document.getElementById("payroll-id").value;
+        const employeeId = document.getElementById("payroll-employee-id").value;
+        const salary = document.getElementById("salary").value;
+        const bonuses = document.getElementById("bonuses").value;
+        const deductions = document.getElementById("deductions").value;
+
+        const row = `<tr>
+                        <td>${payrollId}</td>
+                        <td>${employeeId}</td>
+                        <td>${salary}</td>
+                        <td>${bonuses}</td>
+                        <td>${deductions}</td>
+                    </tr>`;
+        document.getElementById("payroll-data").insertAdjacentHTML("beforeend", row);
+        payrollForm.reset();
+    });
+
+    performanceForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const reviewId = document.getElementById("review-id").value;
+        const employeeId = document.getElementById("performance-employee-id").value;
+        const reviewDate = document.getElementById("review-date").value;
+        const rating = document.getElementById("rating").value;
+        const feedback = document.getElementById("feedback").value;
+
+        const row = `<tr>
+                        <td>${reviewId}</td>
+                        <td>${employeeId}</td>
+                        <td>${reviewDate}</td>
+                        <td>${rating}</td>
+                        <td>${feedback}</td>
+                    </tr>`;
+        document.getElementById("performance-data").insertAdjacentHTML("beforeend", row);
+        performanceForm.reset();
+    });
+
+    salaryAdvancesForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const advanceId = document.getElementById("advance-id").value;
+        const employeeId = document.getElementById("advance-employee-id").value;
+        const amount = document.getElementById("amount").value;
+        const requestDate = document.getElementById("request-date").value;
+        const status = document.getElementById("status").value;
+
+        const row = `<tr>
+                        <td>${advanceId}</td>
+                        <td>${employeeId}</td>
+                        <td>${amount}</td>
+                        <td>${requestDate}</td>
+                        <td>${status}</td>
+                    </tr>`;
+        document.getElementById("salary-advances-data").insertAdjacentHTML("beforeend", row);
+        salaryAdvancesForm.reset();
+    });
+});
+
+    </script>
+</body>
+</html>
